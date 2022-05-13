@@ -12,21 +12,12 @@ import java.math.BigDecimal
 class CarteiraServiceTest {
     private val usuarioServiceMock = mockk<UsuarioService>()
     private val criptoServiceMock = mockk<CriptoService>()
-    private val cripto = Cripto(957, "Cardano", BigDecimal(2022))
-    private val usuario = Usuario(
-        123,
-        "70638761476",
-        "Mailson",
-        "mailson@souza.com",
-        "AssajakaA",
-        Carteira()
-    )
-
-
     private val carteiraService = CarteiraService(usuarioServiceMock, criptoServiceMock)
-
     @Test
     fun `deve comprar uma cripto inexistente na carteira`() {
+        val cripto = Cripto(957, "Cardano", BigDecimal(2022))
+        val usuario = Usuario(123, "70638761476", "Mailson", "mailson@souza.com",
+            "AssajakaA", Carteira())
 
         every { usuarioServiceMock.buscarPorId(123) } returns usuario
         every { criptoServiceMock.buscarPorId(957) } returns cripto
@@ -38,6 +29,8 @@ class CarteiraServiceTest {
 
     @Test
     fun `deve consultar valores agrupados`() {
+        val usuario = Usuario(123, "70638761476", "Mailson", "mailson@souza.com",
+            "AssajakaA", Carteira())
         every { usuarioServiceMock.buscarPorId(123).carteira.cripto } returns usuario.carteira.cripto
 
         assertNotNull(carteiraService.consultarValoresAgrupados(123))

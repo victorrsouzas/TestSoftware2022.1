@@ -1,6 +1,7 @@
 package school.cesar.criptocorretora.validators
 
 import org.junit.jupiter.api.Assertions.assertEquals
+import org.junit.jupiter.api.Assertions.assertFalse
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
 import school.cesar.criptocorretora.entidades.Carteira
@@ -102,4 +103,71 @@ class UsuarioValidatorTest {
             assertEquals("O campo confirmação senha deve ter entre 8 e 15 caracteres", it.message)
         }
     }
+    @Test
+    fun `deve lancar excecao quando cpf não tiver 11 digitos`(){
+        val usuario = Usuario(123, "123456789-1",nome = "Mailson",email = "mailson@souza.com",
+            senha = "AsaA12345678", carteira = Carteira());
+        assertThrows<RuntimeException> {
+            UsuarioValidator(cpfUtil = CPFUtil(), emailUtil = EmailUtil(), senhaUtil = SenhaUtil()).valida(usuario)
+        }.also {
+            assertEquals("O cpf é invalido", it.message)
+        }
+    }
+    @Test
+    fun `deve lancar excecao quando e-mail for invalido`(){
+        val usuario = Usuario(123, "70638761476",nome = "Mailson",email = "ofncesarschool",senha = "12345678",
+            carteira = Carteira());
+        assertThrows<RuntimeException> {
+            UsuarioValidator(cpfUtil = CPFUtil(), emailUtil = EmailUtil(), senhaUtil = SenhaUtil()).valida(usuario)
+        }.also {
+            assertEquals("O a emal deve seguir o formato palavra@palavra.palavra", it.message)
+        }
+    }
+    @Test
+    fun `deve lancar excecao quando a senha for invalida`(){
+        val usuario = Usuario(123, "70638761476",nome = "Mailson",email = "mailson@souza.com",
+            senha = "12345678", carteira = Carteira());
+        assertThrows<RuntimeException> {
+            UsuarioValidator(cpfUtil = CPFUtil(), emailUtil = EmailUtil(), senhaUtil = SenhaUtil()).valida(usuario)
+        }.also {
+            assertEquals("O a senha deve conter numeros, letras maisculas e minusculas", it.message)
+        }
+    }
+    @Test
+    fun `deve lancar excecao quando a senha nao tiver numeros`(){
+        val usuario = Usuario(123, "70638761476",nome = "Mailson",email = "mailson@souza.com",
+            senha = "asaaacada", carteira = Carteira());
+        assertThrows<RuntimeException> {
+            UsuarioValidator(cpfUtil = CPFUtil(), emailUtil = EmailUtil(), senhaUtil = SenhaUtil()).valida(usuario)
+        }.also {
+            assertEquals("O a senha deve conter numeros, letras maisculas e minusculas", it.message)
+        }
+    }
+    @Test
+    fun `deve lancar excecao quando o cpf so tiver numeros iguais`(){
+        val usuario = Usuario(123, "66666666666",nome = "Mailson",email = "mailson@souza.com",
+            senha = "MAILSOaa123", carteira = Carteira());
+        assertThrows<RuntimeException> {
+            UsuarioValidator(cpfUtil = CPFUtil(), emailUtil = EmailUtil(), senhaUtil = SenhaUtil()).valida(usuario)
+        }.also {
+            assertEquals("O cpf é invalido", it.message)
+        }
+    }
+    @Test
+    fun `deve lancar excecao quando e-mail nao conter o ponto`(){
+        val usuario = Usuario(123, "70638761476",nome = "Mailson",email = "ofn@cesarschool",senha = "12345678",
+            carteira = Carteira());
+        assertThrows<RuntimeException> {
+            UsuarioValidator(cpfUtil = CPFUtil(), emailUtil = EmailUtil(), senhaUtil = SenhaUtil()).valida(usuario)
+        }.also {
+            assertEquals("O a emal deve seguir o formato palavra@palavra.palavra", it.message)
+        }
+    }
+    @Test
+    fun `deve retornar falso caso os ultimos digitos nao forem esperados`() {
+        var cpfUtil = CPFUtil()
+        assertFalse(cpfUtil.isCPF("10000000001"))
+    }
+
+
 }

@@ -11,14 +11,10 @@ import school.cesar.criptocorretora.validators.CriptoValidador
 import java.math.BigDecimal
 
 class CriptoServiceTest {
-    val criptoRepositoryTeste = CriptoRepository()
-    val criptoBuilderTeste = CriptoBuilder()
-    val criptoValidadorTeste = CriptoValidador()
-
-    val criptoService = CriptoService(criptoBuilderTeste , criptoValidadorTeste, criptoRepositoryTeste)
-
     @Test
     fun `Erro ao buscar por uma cripto nao existente`(){
+        val criptoService = CriptoService(criptoBuilder = CriptoBuilder(), criptoValidador = CriptoValidador(),
+            criptoRepository = CriptoRepository() )
         criptoService.add("Cardano", BigDecimal(4.3))
         assertThrows<CriptoInvalidaException> {
             criptoService.buscarPorId(1)

@@ -14,13 +14,12 @@ import school.cesar.criptocorretora.validators.UsuarioValidator
 
 
 class UsuarioServiceTest {
-
-    val usuario = Usuario(123, "70638761476",nome = "Mailson",email = "mailson@souza.com",
-        senha = "AssajakaA123", carteira = Carteira())
     val usuarioValidator = UsuarioValidator(cpfUtil = CPFUtil(), emailUtil = EmailUtil(), senhaUtil = SenhaUtil() )
     val usuarioService = UsuarioService(usuarioRepository = UsuarioRepository(), usuarioValidator = usuarioValidator)
     @Test
     fun `procurar por usuario valido existente`(){
+        val usuario = Usuario(123, "70638761476",nome = "Mailson",email = "mailson@souza.com",
+            senha = "AssajakaA123", carteira = Carteira())
         usuarioService.adicionar(usuario = usuario)
         //Assertions.assertTrue(usuarioService.buscarPorId(1).id)
         //assertTrue(usuarioService.buscarPorId(1).id)
@@ -30,6 +29,8 @@ class UsuarioServiceTest {
     }
     @Test
     fun `procurar por usuario valido inexistente`(){
+        val usuario = Usuario(123, "70638761476",nome = "Mailson",email = "mailson@souza.com",
+            senha = "AssajakaA123", carteira = Carteira())
         usuarioService.adicionar(usuario = usuario)
         //Assertions.assertTrue(usuarioService.buscarPorId(1).id)
         //assertTrue(usuarioService.buscarPorId(1).id)

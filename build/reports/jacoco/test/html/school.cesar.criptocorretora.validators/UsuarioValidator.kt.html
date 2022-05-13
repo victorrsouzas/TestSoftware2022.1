@@ -46,13 +46,13 @@ import school.cesar.criptocorretora.util.SenhaUtil
         }
 
 <span class="fc bfc" id="L48" title="All 6 branches covered.">        if (usuario.senha.length !in 8..15) {</span>
-<span class="fc" id="L49">            throw UsuarioInvalidoException(&quot;O campo confirmaÃ§Ã£o senha deve ter entre 8 e 15 caracteres&quot;)</span>
+<span class="fc" id="L49">            throw UsuarioInvalidoException(&quot;O campo confirmação senha deve ter entre 8 e 15 caracteres&quot;)</span>
         }
 <span class="fc" id="L51">    }</span>
 
     private fun validaFormatoCampos(usuario: Usuario) {
 <span class="fc bfc" id="L54" title="All 2 branches covered.">        if (!cpfUtil.isCPF(usuario.cpf)) {</span>
-<span class="fc" id="L55">            throw UsuarioInvalidoException(&quot;O cpf Ã© invalido&quot;)</span>
+<span class="fc" id="L55">            throw UsuarioInvalidoException(&quot;O cpf é invalido&quot;)</span>
         }
 
 <span class="fc bfc" id="L58" title="All 2 branches covered.">        if (!emailUtil.isEmailValido(usuario.email)) {</span>
