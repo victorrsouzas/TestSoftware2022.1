@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="school.cesar.criptocorretora.validators.UsuarioValidatorTest" tests="15" skipped="0" failures="0" errors="0" timestamp="2022-05-13T15:19:07" hostname="MANTENA-006920" time="0.387">
+  <properties/>
+  <testcase name="deve lancar excecao quando a senha for invalida()" classname="school.cesar.criptocorretora.validators.UsuarioValidatorTest" time="0.016"/>
+  <testcase name="deve lancar excecao quando nome for vazio()" classname="school.cesar.criptocorretora.validators.UsuarioValidatorTest" time="0.029"/>
+  <testcase name="deve lancar excecao quando e-mail for invalido()" classname="school.cesar.criptocorretora.validators.UsuarioValidatorTest" time="0.017"/>
+  <testcase name="deve lancar excecao quando nome tiver seu tamanho superior a 200 caracteres()" classname="school.cesar.criptocorretora.validators.UsuarioValidatorTest" time="0.006"/>
+  <testcase name="deve lancar excecao quando cpf tiver tamanho diferente de 11 digitos()" classname="school.cesar.criptocorretora.validators.UsuarioValidatorTest" time="0.006"/>
+  <testcase name="deve lancar excecao quando a senha não tiver tamanho entre 8 e 15 caracteres()" classname="school.cesar.criptocorretora.validators.UsuarioValidatorTest" time="0.006"/>
+  <testcase name="deve retornar falso caso os ultimos digitos nao forem esperados()" classname="school.cesar.criptocorretora.validators.UsuarioValidatorTest" time="0.004"/>
+  <testcase name="deve lancar excecao quando cpf não tiver 11 digitos()" classname="school.cesar.criptocorretora.validators.UsuarioValidatorTest" time="0.03"/>
+  <testcase name="deve lancar excecao quando o cpf so tiver numeros iguais()" classname="school.cesar.criptocorretora.validators.UsuarioValidatorTest" time="0.05"/>
+  <testcase name="deve lancar excecao quando a senha for vazia()" classname="school.cesar.criptocorretora.validators.UsuarioValidatorTest" time="0.018"/>
+  <testcase name="deve lancar excecao quando e-mail nao conter o ponto()" classname="school.cesar.criptocorretora.validators.UsuarioValidatorTest" time="0.084"/>
+  <testcase name="deve lancar excecao quando a senha não tiver tamanho maior 15 caracteres()" classname="school.cesar.criptocorretora.validators.UsuarioValidatorTest" time="0.01"/>
+  <testcase name="deve lancar excecao quando e-mail for vazio()" classname="school.cesar.criptocorretora.validators.UsuarioValidatorTest" time="0.019"/>
+  <testcase name="deve lancar excecao quando cpf for vazio()" classname="school.cesar.criptocorretora.validators.UsuarioValidatorTest" time="0.009"/>
+  <testcase name="deve lancar excecao quando a senha nao tiver numeros()" classname="school.cesar.criptocorretora.validators.UsuarioValidatorTest" time="0.009"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

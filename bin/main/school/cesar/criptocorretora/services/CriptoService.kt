@@ -4,7 +4,7 @@ import school.cesar.criptocorretora.builders.CriptoBuilder
 import school.cesar.criptocorretora.entidades.Cripto
 import school.cesar.criptocorretora.excecoes.CriptoInvalidaException
 import school.cesar.criptocorretora.repositories.CriptoRepository
-import school.cesar.criptocorretora.validadores.CriptoValidador
+import school.cesar.criptocorretora.validators.CriptoValidador
 import java.math.BigDecimal
 
 class CriptoService(

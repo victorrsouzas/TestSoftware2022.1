@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SenhaUtil.kt</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">cripto-corretora</a> &gt; <a href="index.source.html" class="el_package">school.cesar.criptocorretora.util</a> &gt; <span class="el_source">SenhaUtil.kt</span></div><h1>SenhaUtil.kt</h1><pre class="source lang-java linenums">package school.cesar.criptocorretora.util
+
+import java.math.BigInteger
+import java.security.MessageDigest
+
+<span class="fc" id="L6">class SenhaUtil {</span>
+
+    fun isFormatoOK(senha: String): Boolean {
+<span class="fc" id="L9">        var contemLetraMinuscula = false</span>
+<span class="fc" id="L10">        var contemLetraMaiscula = false</span>
+<span class="fc" id="L11">        var contemNumero = false</span>
+
+<span class="fc bfc" id="L13" title="All 2 branches covered.">        for (letra in senha) {</span>
+<span class="fc bfc" id="L14" title="All 4 branches covered.">            contemLetraMinuscula = contemLetraMinuscula || temLetraMiniscula(letra)</span>
+<span class="fc bfc" id="L15" title="All 4 branches covered.">            contemLetraMaiscula = contemLetraMaiscula || temLetraMaiscula(letra)</span>
+<span class="fc bfc" id="L16" title="All 4 branches covered.">            contemNumero = contemNumero || temNumero(letra)</span>
+        }
+
+<span class="pc bpc" id="L19" title="1 of 6 branches missed.">        return contemLetraMinuscula &amp;&amp; contemLetraMaiscula &amp;&amp; contemNumero</span>
+    }
+
+    private fun temNumero(letra: Char): Boolean {
+<span class="fc" id="L23">        var contemNumero1 = false</span>
+<span class="pc bpc" id="L24" title="1 of 6 branches missed.">        if (letra in '0'..'9') {</span>
+<span class="fc" id="L25">            contemNumero1 = true</span>
+        }
+<span class="fc" id="L27">        return contemNumero1</span>
+    }
+
+    private fun temLetraMaiscula(letra: Char): Boolean {
+<span class="fc" id="L31">        var contemLetraMaiscula1 = false</span>
+<span class="fc bfc" id="L32" title="All 6 branches covered.">        if (letra in 'A'..'Z') {</span>
+<span class="fc" id="L33">            contemLetraMaiscula1 = true</span>
+        }
+<span class="fc" id="L35">        return contemLetraMaiscula1</span>
+    }
+
+    private fun temLetraMiniscula(letra: Char): Boolean {
+<span class="fc" id="L39">        var contemLetraMinuscula1 = false</span>
+<span class="pc bpc" id="L40" title="1 of 6 branches missed.">        if (letra in 'a'..'z') {</span>
+<span class="fc" id="L41">            contemLetraMinuscula1 = true</span>
+        }
+<span class="fc" id="L43">        return contemLetraMinuscula1</span>
+    }
+
+    fun md5(input: String): String {
+<span class="nc" id="L47">        val md = MessageDigest.getInstance(&quot;MD5&quot;)</span>
+
+<span class="nc" id="L49">        return BigInteger(1, md.digest(input.toByteArray()))</span>
+<span class="nc" id="L50">            .toString(16)</span>
+<span class="nc" id="L51">            .padStart(32, '0')</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

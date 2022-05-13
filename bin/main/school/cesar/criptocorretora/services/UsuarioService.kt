@@ -3,7 +3,7 @@ package school.cesar.criptocorretora.services
 import school.cesar.criptocorretora.entidades.Usuario
 import school.cesar.criptocorretora.excecoes.UsuarioInvalidoException
 import school.cesar.criptocorretora.repositories.UsuarioRepository
-import school.cesar.criptocorretora.validadores.UsuarioValidator
+import school.cesar.criptocorretora.validators.UsuarioValidator
 
 class UsuarioService(
     private val usuarioValidator: UsuarioValidator,

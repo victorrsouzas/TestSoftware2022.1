@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UsuarioValidator.kt</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">cripto-corretora</a> &gt; <a href="index.source.html" class="el_package">school.cesar.criptocorretora.validators</a> &gt; <span class="el_source">UsuarioValidator.kt</span></div><h1>UsuarioValidator.kt</h1><pre class="source lang-java linenums">package school.cesar.criptocorretora.validators
+
+import school.cesar.criptocorretora.entidades.Usuario
+import school.cesar.criptocorretora.excecoes.UsuarioInvalidoException
+import school.cesar.criptocorretora.util.CPFUtil
+import school.cesar.criptocorretora.util.EmailUtil
+import school.cesar.criptocorretora.util.SenhaUtil
+
+<span class="fc" id="L9">class UsuarioValidator(</span>
+<span class="fc" id="L10">    private val cpfUtil: CPFUtil,</span>
+<span class="fc" id="L11">    private val emailUtil: EmailUtil,</span>
+<span class="fc" id="L12">    private val senhaUtil: SenhaUtil</span>
+) {
+
+    fun valida(usuario: Usuario) {
+<span class="fc" id="L16">        validaCamposObrigatorios(usuario)</span>
+<span class="nc" id="L17">        validaTamanhoCampos(usuario)</span>
+<span class="nc" id="L18">        validaFormatoCampos(usuario)</span>
+<span class="nc" id="L19">    }</span>
+
+    private fun validaCamposObrigatorios(usuario: Usuario) {
+<span class="fc bfc" id="L22" title="All 2 branches covered.">        if (usuario.nome.isBlank()) {</span>
+<span class="fc" id="L23">            throw UsuarioInvalidoException(&quot;O nome deve ser preenchido&quot;)</span>
+        }
+
+<span class="fc bfc" id="L26" title="All 2 branches covered.">        if (usuario.cpf.isBlank()) {</span>
+<span class="fc" id="L27">            throw UsuarioInvalidoException(&quot;O cpf deve ser preenchido&quot;)</span>
+        }
+
+<span class="fc bfc" id="L30" title="All 2 branches covered.">        if (usuario.email.isBlank()) {</span>
+<span class="fc" id="L31">            throw UsuarioInvalidoException(&quot;O e-mail deve ser preenchido&quot;)</span>
+        }
+
+<span class="fc bfc" id="L34" title="All 2 branches covered.">        if (usuario.senha.isBlank()) {</span>
+<span class="fc" id="L35">            throw UsuarioInvalidoException(&quot;O senha deve ser preenchido&quot;)</span>
+        }
+<span class="fc" id="L37">    }</span>
+
+    private fun validaTamanhoCampos(usuario: Usuario) {
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        if (usuario.nome.length &gt; 200) {</span>
+<span class="fc" id="L41">            throw UsuarioInvalidoException(&quot;O campo nome deve ter menos de 200 caracteres&quot;)</span>
+        }
+
+<span class="fc bfc" id="L44" title="All 2 branches covered.">        if (usuario.cpf.length != 11) {</span>
+<span class="fc" id="L45">            throw UsuarioInvalidoException(&quot;O campo cpf deve ter 11 caracteres numericos&quot;)</span>
+        }
+
+<span class="pc bpc" id="L48" title="4 of 6 branches missed.">        if (usuario.senha.length !in 8..15) {</span>
+<span class="fc" id="L49">            throw UsuarioInvalidoException(&quot;O campo confirmaÃ§Ã£o senha deve ter entre 8 e 15 caracteres&quot;)</span>
+        }
+<span class="nc" id="L51">    }</span>
+
+    private fun validaFormatoCampos(usuario: Usuario) {
+<span class="nc bnc" id="L54" title="All 2 branches missed.">        if (!cpfUtil.isCPF(usuario.cpf)) {</span>
+<span class="nc" id="L55">            throw UsuarioInvalidoException(&quot;O cpf Ã© invalido&quot;)</span>
+        }
+
+<span class="nc bnc" id="L58" title="All 2 branches missed.">        if (!emailUtil.isEmailValido(usuario.email)) {</span>
+<span class="nc" id="L59">            throw UsuarioInvalidoException(&quot;O a emal deve seguir o formato palavra@palavra.palavra&quot;)</span>
+        }
+
+<span class="nc bnc" id="L62" title="All 2 branches missed.">        if (!senhaUtil.isFormatoOK(usuario.senha)) {</span>
+<span class="nc" id="L63">            throw UsuarioInvalidoException(&quot;O a senha deve conter numeros, letras maisculas e minusculas&quot;)</span>
+        }
+<span class="nc" id="L65">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

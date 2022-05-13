@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="school.cesar.criptocorretora.services.CarteiraServiceTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2022-05-13T15:19:01" hostname="MANTENA-006920" time="5.181">
+  <properties/>
+  <testcase name="deve consultar valores agrupados()" classname="school.cesar.criptocorretora.services.CarteiraServiceTest" time="5.027"/>
+  <testcase name="deve comprar uma cripto inexistente na carteira()" classname="school.cesar.criptocorretora.services.CarteiraServiceTest" time="0.151"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
